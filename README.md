@@ -60,7 +60,7 @@ NG6 uses Gulp and Webpack together for its build system. Yes, you don't need Gul
 ## File Structure
 We use a componentized approach with NG6. This will be the eventual standard (and particularly helpful, if using Angular's new router) as well as a great way to ensure a tasteful transition to Angular 2, when the time is ripe. Everything--or mostly everything, as we'll explore (below)--is a component. A component is a self-contained concern--may it be a feature or strictly-defined, ever-present element of the UI (such as a header, sidebar, or footer). Also characteristic of a component is that it harnesses its own stylesheets, templates, controllers, routes, services, and specs. This encapsulation allows us the comfort of isolation and structural locality. Here's how it looks:
 ```
-client
+src
 ⋅⋅app/
 ⋅⋅⋅⋅app.js * app entry file
 ⋅⋅⋅⋅app.html * app template
@@ -106,7 +106,7 @@ Here's a list of available tasks:
 * `webpack`
   * runs Webpack, which will transpile, concatenate, and compress (collectively, "bundle") all assets and modules into `dist/bundle.js`. It also prepares `index.html` to be used as application entry point, links assets and created dist version of our application.
 * `serve`
-  * starts a dev server via `webpack-dev-server`, serving the client folder.
+  * starts a dev server via `webpack-dev-server`, serving the src folder.
 * `watch`
   * alias of `serve`
 * `default` (which is the default task that runs when typing `gulp` without providing an argument)
@@ -145,11 +145,11 @@ To generate a component, run `gulp component --name componentName`.
 
 The parameter following the `--name` flag is the name of the component to be created. Ensure that it is unique or it will overwrite the preexisting identically-named component.
 
-The component will be created, by default, inside `client/app/components`. To change this, apply the `--parent` flag, followed by a path relative to `client/app/components/`.
+The component will be created, by default, inside `src/app/components`. To change this, apply the `--parent` flag, followed by a path relative to `src/app/components/`.
 
-For example, running `gulp component --name signup --parent auth` will create a `signup` component at `client/app/components/auth/signup`.  
+For example, running `gulp component --name signup --parent auth` will create a `signup` component at `src/app/components/auth/signup`.  
 
-Running `gulp component --name footer --parent ../common` creates a `footer` component at `client/app/common/footer`.  
+Running `gulp component --name footer --parent ../common` creates a `footer` component at `src/app/common/footer`.  
 
 Because the argument to `--name` applies to the folder name **and** the actual component name, make sure to camelcase the component names.
 
