@@ -70,14 +70,14 @@ gulp.task('serve', () => {
   const config = require('./webpack.dev.config');
   
   config.entry.app = [
-    //'webpack/hot/dev-server',
+    'webpack/hot/dev-server',
     'webpack-dev-server/client?http://localhost:9000/',
   ].concat(paths.entry);
 
   var compiler = webpack(config);
 
   var server = new WebpackDevServer(compiler, {
-    hot: false,    
+    hot: true,
     stats: { 
       colors: true       
     }
@@ -85,8 +85,6 @@ gulp.task('serve', () => {
 
   server.listen(9000);
 });
-
-gulp.task('watch', ['serve']);
 
 gulp.task('component', () => {
   const cap = (val) => {
