@@ -13,8 +13,6 @@ import gutil    from 'gulp-util';
 import serve    from 'browser-sync';
 import del      from 'del';
 import WebpackDevServer from 'webpack-dev-server';
-import webpackDevMiddelware from 'webpack-dev-middleware';
-import webpachHotMiddelware from 'webpack-hot-middleware';
 import colorsSupported      from 'supports-color';
 import historyApiFallback   from 'connect-history-api-fallback';
 
