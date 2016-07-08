@@ -12,6 +12,7 @@ import lodash   from 'lodash';
 import gutil    from 'gulp-util';
 import serve    from 'browser-sync';
 import del      from 'del';
+import WebpackDevServer from 'webpack-dev-server';
 import webpackDevMiddelware from 'webpack-dev-middleware';
 import webpachHotMiddelware from 'webpack-hot-middleware';
 import colorsSupported      from 'supports-color';
@@ -67,32 +68,22 @@ gulp.task('webpack', ['clean'], (cb) => {
 
 gulp.task('serve', () => {
   const config = require('./webpack.dev.config');
+  
   config.entry.app = [
-    // this modules required to make HRM working
-    // it responsible for all this webpack magic
-    'webpack-hot-middleware/client?reload=true',
-    // application entry point
+    //'webpack/hot/dev-server',
+    'webpack-dev-server/client?http://localhost:9000/',
   ].concat(paths.entry);
 
   var compiler = webpack(config);
 
-  serve({
-    port: process.env.PORT || 3000,
-    open: false,
-    server: {baseDir: root},
-    middleware: [
-      historyApiFallback(),
-      webpackDevMiddelware(compiler, {
-        stats: {
-          colors: colorsSupported,
-          chunks: false,
-          modules: false
-        },
-        publicPath: config.output.publicPath
-      }),
-      webpachHotMiddelware(compiler)
-    ]
+  var server = new WebpackDevServer(compiler, {
+    hot: false,    
+    stats: { 
+      colors: true       
+    }
   });
+
+  server.listen(9000);
 });
 
 gulp.task('watch', ['serve']);
