@@ -62,7 +62,7 @@ We use a componentized approach with NG6. This will be the eventual standard (an
 ```
 src
 ⋅⋅app/
-⋅⋅⋅⋅app.js * app entry file
+⋅⋅⋅⋅boot.js * app entry file
 ⋅⋅⋅⋅app.html * app template
 ⋅⋅⋅⋅common/ * functionality pertinent to several components propagate into this directory
 ⋅⋅⋅⋅components/ * where components live

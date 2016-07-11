@@ -1,16 +1,38 @@
-var path    = require('path');
+var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  devtool: 'sourcemap',
+  devtool: 'source-map',
   entry: {},
   module: {
     loaders: [
-       { test: /\.js$/, exclude: [/app\/lib/, /node_modules/], loader: 'ng-annotate!babel' },
-       { test: /\.html$/, loader: 'raw' },
-       { test: /\.styl$/, loader: 'style!css!stylus' },
-       { test: /\.css$/, loader: 'style!css' }
+      {
+        test: /\.html$/,
+        loader: 'raw'
+      },
+      {
+        test: /\.js$/, exclude: [/app\/lib/, /node_modules/],
+        loader: 'ng-annotate!babel'
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css'
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css?sourceMap', 'sass?sourceMap']
+      },
+      {
+        test: /\.svg$/,
+        include: path.resolve(__dirname, 'src/assets/images/svg'),
+        loader: 'file?name=assets/images/svg/[name].[ext]'
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        include: path.resolve(__dirname, 'src/assets/fonts'),
+        loader: 'file?name=assets/fonts/[name].[ext]'
+      }      
     ]
   },
   plugins: [

@@ -29,22 +29,19 @@ let resolveToComponents = (glob = '') => {
 
 let paths = {
   js: resolveToComponents('**/*!(.spec.js).js'), // exclude spec files
-  styl: resolveToApp('**/*.styl'), // stylesheets
   html: [
     resolveToApp('**/*.html'),
     path.join(root, 'index.html')
   ],
   entry: [
     'babel-polyfill',
-    path.join(__dirname, root, 'app/app.js')
+    path.join(__dirname, root, 'app/boot.js')    
   ],
-  output: root,
   blankTemplates: path.join(__dirname, 'generator', 'component/**/*.**'),
   dest: path.join(__dirname, 'dist')
 };
 
-// use webpack.config.js to build modules
-gulp.task('webpack', ['clean'], (cb) => {
+gulp.task('build', ['clean'], (cb) => {
   const config = require('./webpack.dist.config');
   config.entry.app = paths.entry;
 

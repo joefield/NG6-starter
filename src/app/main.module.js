@@ -1,12 +1,14 @@
-import angular from 'angular';
-import uiRouter from 'angular-ui-router';
+import './vendor';
 import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
 import 'normalize.css';
 
-angular.module('app', [
-    uiRouter,
+import '../assets/fonts/fonts.css';
+import '../assets/styles/app.scss';
+require.context('../assets/images/svg');
+
+export default angular.module('app', [
     Common,
     Components
   ])
@@ -16,5 +18,4 @@ angular.module('app', [
     // #how-to-configure-your-server-to-work-with-html5mode
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
-
   .component('app', AppComponent);

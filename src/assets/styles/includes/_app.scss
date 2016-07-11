@@ -1,0 +1,46 @@
+//@import url(http://fonts.googleapis.com/css?family=Roboto)
+
+body {
+  height: 100%;
+  // browsers default to 16px for font-size,
+  // so setting top-level font-size to 62.5%
+  // scales 1rem to equal 10px.
+  font: 62.5% 'Roboto', sans-serif;
+}
+
+.app {
+    height: 100%;
+    background-color: $lightBgColor;
+}
+
+.hero {
+  background-color: $darkBgColor;
+  height: 50rem;
+  padding: 3rem;  
+  color: $lightTextColor;
+}
+
+.navbar {
+  height: 6.5rem;
+  background-color: $primaryColor;
+  padding: 1rem;
+  .logo {
+    display: inline-block;
+    color: $lightTextColor;
+    margin-right: 50%;
+  } 
+  .nav-links {
+    span {
+      color: $lightTextColor;
+      font-size: 1.6rem;
+    }
+  }  
+}
+
+.home {
+  color: red;
+}
+
+.about {
+  color: red;
+}
